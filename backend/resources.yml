@@ -1,0 +1,37 @@
+# DynamoDB TripTable
+tripTable:
+  Type: AWS::DynamoDB::Table
+  Properties: 
+    AttributeDefinitions: 
+      - AttributeName: "tripId"
+        AttributeType: "S"
+      - AttributeName: "userId"
+        AttributeType: "S"
+      - AttributeName: "createdAt"
+        AttributeType: "S"
+      - AttributeName: "startTime"
+        AttributeType: "S"
+      - AttributeName: "endTime"
+        AttributeType: "S"
+    BillingMode: Pay_PER_REQUEST
+    KeySchema: 
+      - AttributeName: "tripId"
+        KeyType: "HASH"
+      - AttributeName: "userId"
+        KeyType: "HASH"
+    TableName: "tripTable"
+    
+# Cognito User Pool
+cognitoUserPool: 
+ Type: AWS::Cognito::UserPool
+  Properties: 
+    UserPoolName: "inukUserPool"
+    UsernameAttributes: 
+      - Email
+
+# Cognito User Pool Client
+cognitoUserPoolClient: 
+  Type: AWS::Cognito::UserPoolClient
+  Properties: 
+    ClientName: inukUserPoolClient
+    UserPoolId: !Ref cognitoUserPool 
