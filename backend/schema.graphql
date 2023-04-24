@@ -1,6 +1,6 @@
 schema:{
     query: Query
-    mutaion: Mutation
+    mutation: Mutation
     subscription: Subscription
 }
 

@@ -1,2 +1,20 @@
-    name: inuk-backend-${self:custom.stage}
-    
+name: inuk-appsync-api
+authenticationType: AMAZON_COGNITO_USER_POOLS
+schema: schema.graphql
+userPoolConfig:
+  defaultAction: ALLOW
+  userPoolId: !Ref cognitoUserPool
+
+mappingTemplatesLocation: mapping-templates
+mappingTemplates:
+  
+dataSources: 
+  - type: NONE
+    name: none 
+  - type: AMAZON_DYNAMODB
+    name: tripTable
+    description: "Trip Table"
+    config:
+      tableName: { Ref: tripTable }
+      serviceRoleArn: !GetAtt DynamoDBRole.Arn
+      awsRegion: !Ref AWS::Region
