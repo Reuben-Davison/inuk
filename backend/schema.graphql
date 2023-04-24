@@ -1,0 +1,32 @@
+schema:{
+    query: Query
+    mutaion: Mutation
+    subscription: Subscription
+}
+
+type Query{
+    getTripById(id: ID!): Trip!
+    listTripsByUser(limit: Int!, nextToken: String): TripPage!
+}
+
+type TripPage{
+    trips: [Trip]
+    nextToken: String
+}
+
+type Trip{
+    id: ID!
+    name: String!
+    description: String!
+    startDate: String!
+    endDate: String!
+    createdAt: String!
+    creator: User!
+}
+
+type User{
+    id: ID!
+    name: String!
+    email: String!
+    trips: [Trip]
+}

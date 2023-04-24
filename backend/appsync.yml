@@ -1,0 +1,2 @@
+    name: inuk-backend-${self:custom.stage}
+    
