@@ -1,8 +1,8 @@
 # DynamoDB TripTable
-tripTable:
+TripTable:
   Type: AWS::DynamoDB::Table
   Properties:
-    TableName: "tripTable"
+    TableName: ${self:service}-TRIP_TABLE-${sls:stage}
     BillingMode: PAY_PER_REQUEST
     AttributeDefinitions:
       - AttributeName: "userId"
@@ -16,10 +16,10 @@ tripTable:
         KeyType: "RANGE"
 
 # Dynamodb MessageTable
-messageTable:
+MessageTable:
   Type: AWS::DynamoDB::Table
   Properties:
-    TableName: "messageTable"
+    TableName: ${self:service}-MESSAGE_TABLE-${sls:stage}
     BillingMode: PAY_PER_REQUEST
     AttributeDefinitions:
       - AttributeName: "messageId"

@@ -1,12 +1,12 @@
 {
-  "dependencies": {},
   "name": "backend",
   "version": "1.0.0",
   "main": "handler.js",
   "devDependencies": {
-    "serverless-appsync-plugin": "^2.2.0"
+    "serverless-appsync-plugin": "^2.2.1"
   },
   "scripts": {
+    "sls": "sls",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,0 +1,36 @@
+# schema {
+#     query: Query
+#     # mutation: Mutation
+#     # subscription: Subscription
+# }
+
+# type Query {
+#     getTrip(tripId: ID!): Trip!
+# #     listTripsByUser(limit: Int!, nextToken: String): TripPage!
+# }
+
+# # type TripPage{
+# #     trips: [Trip]
+# #     nextToken: String
+# # }
+
+# type User {
+#     id: ID!
+#     name: String!
+#     email: String!
+#     trips: [Trip]
+# }
+
+# type Trip @model {
+#     id: ID!
+#     name: String!
+#     description: String!
+#     startDate: String!
+#     endDate: String!
+#     createdAt: String!
+#     creator: User!
+# }
+
+schema {
+    query: Query
+}

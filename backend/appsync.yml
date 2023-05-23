@@ -1,13 +1,19 @@
 name: inuk-appsync-api
+schema: schema.api.graphql
 authenticationType: AMAZON_COGNITO_USER_POOLS
-schema: schema.graphql
 userPoolConfig:
+  awsRegion: us-west-2
   defaultAction: ALLOW
   userPoolId: !Ref cognitoUserPool
 
 mappingTemplatesLocation: mapping-templates
 mappingTemplates:
-  
+  - dataSource: tripTable
+    type: Query
+    field: getTrip
+    request: false 
+    response: false 
+
 dataSources: 
   - type: NONE
     name: none 
@@ -15,6 +21,9 @@ dataSources:
     name: tripTable
     description: "Trip Table"
     config:
-      tableName: { Ref: tripTable }
-      serviceRoleArn: !GetAtt DynamoDBRole.Arn
-      awsRegion: !Ref AWS::Region
+      tableName: !Ref TripTable
+  - type: AMAZON_DYNAMODB
+    name: messageTable
+    description: "Message Table"
+    config:
+      tableName: !Ref MessageTable
